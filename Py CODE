@@ -1,0 +1,31 @@
+import random
+import string
+
+def generate_password(length=12):
+    characters = string.ascii_letters + string.digits + string.punctuation
+    password = ''.join(random.choice(characters) for _ in range(length))
+    return password
+
+while True:
+    print("Password Generator")
+    print("1. Generate Password")
+    print("2. Exit")
+    
+    choice = input("Choose an option: ")
+    
+    if choice == '1':
+        password_length = int(input("Enter password length: "))
+        generated_password = generate_password(password_length)
+        print("Generated Password:", generated_password)
+        
+        recreate = input("Would you like to recreate this password? (yes/no): ")
+        if recreate.lower() == 'yes':
+            regenerated_password = generate_password(password_length)
+            print("Recreated Password:", regenerated_password)
+    
+    elif choice == '2':
+        print("Exiting the Password Generator.")
+        break
+    
+    else:
+        print("Invalid choice. Please choose a valid option.")
